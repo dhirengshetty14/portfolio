@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhiren Gangishetty's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --text: #1e293b;
+            --background: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, transparent 20%, var(--primary) 100%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1rem auto;
+        }
+
+        /* Skills */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Experience & Projects */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            margin: 2rem 0;
+            position: relative;
+            width: calc(50% - 2rem);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -60px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -60px;
+        }
+
+        /* Publications */
+        .publications ul {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .publications li {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .publications li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .publications a {
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .publications a:hover {
+            color: var(--accent);
+        }
+
+        /* Social Icons */
+        .icons {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .icons a {
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .icons a:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 60px);
+                left: 60px !important;
+            }
+
+            .timeline-item::before {
+                left: -45px !important;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="animate__animated animate__fadeInDown">Dhiren Gangishetty</h1>
+            <p class="animate__animated animate__fadeInUp">Master's Student | Software Developer | Machine Learning Enthusiast</p>
+            <div class="icons animate__animated animate__fadeIn">
+                <a href="mailto:dhiren@cs.unc.edu" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/dhiren-gangishetty" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/dhirengshetty14" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#publications">Publications</a>
+        </div>
+    </nav>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Master's student in Computer Science at UNC Chapel Hill, specializing in machine learning, computer vision, and software development. 
+            Proven track record in Java, Python, full-stack development, and cloud technologies. Seeking impactful opportunities!
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">Python</div>
+            <div class="skill">PyTorch</div>
+            <div class="skill">Java</div>
+            <div class="skill">C</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">SQL</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">TensorFlow</div>
+            <div class="skill">AWS</div>
+            <div class="skill">GCP</div>
+            <div class="skill">Spring Boot</div>
+            <div class="skill">Keras</div>
+            <div class="skill">MATLAB</div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Java Developer</h3>
+                <p><strong>Picktime</strong></p>
+                <p>Jan 2024 - Jul 2024</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Research Assistant</h3>
+                <p><strong>IIT-D & VIT</strong></p>
+                <p>Jun 2023 - Mar 2024</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Data Analytics Intern</h3>
+                <p><strong>KPMG</strong></p>
+                <p>Dec 2023 - Feb 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Stock Market Prediction BOT</h3>
+                <p>AI-powered trading bot using machine learning algorithms</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Women Safety App</h3>
+                <p>Mobile application for enhancing women's safety</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Cold Chain Monitoring System</h3>
+                <p>IoT-based temperature monitoring solution</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Recommendation System</h3>
+                <p>AI-powered content recommendation engine</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Campus Sustainability App</h3>
+                <p>Environmental monitoring and awareness platform</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Fuzzy Logic Fan Control System</h3>
+                <p> Fuzzy logic to dynamically adjust fan speed based on temperature, improving energy efficiency and system responsiveness.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Predictive Insurance Modeling with Machine Learning</h3>
+                <p> Optimized regression and classification models to accurately
+                    forecast insurance outcomes, leveraging client data to enhance predictive accuracy and decision-making.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="publications">
+        <h2>Publications</h2>
+        <ul>
+            <li>
+                <a href="https://doi.org/10.1109/ICSCNA58489.2023.10370122" target="_blank">
+                    CNN-based identification of crop diseases using various CNN techniques
+                </a>
+                <p>IEEE Conference Publication</p>
+            </li>
+            <li>
+                <a href="https://doi.org/10.55164/ajstr.v27i4.251096" target="_blank">
+                    Physiotherapy assistant for patients using human pose estimation
+                </a>
+                <p>Journal Publication</p>
+            </li>
+            <li>
+                <a href="https://www.irjet.net/archives/V10/i7/IRJET-V10I737.pdf" target="_blank">
+                    StocKuku - AI-enabled mindfulness for profitable stock trading
+                </a>
+                <p>Research Paper</p>
+            </li>
+        </ul>
+    </section>
+<!-- Achievements Section -->
+<section id="achievements">
+    <h2>Achievements</h2>
+    <ul>
+        <li>Published two research papers on machine learning and computer vision in IEEE and reputable journals.</li>
+        <li>Recipient of the <strong>Academic Merit Award</strong> in Computer Science</li>
+        <li>Top 10% of the class in Data Structures and Algorithms at UNC Chapel Hill (Fall 2024).</li>
+        <li>Best Student Leader in AIESEC (2022)</li>
+    </ul>
+</section>
+
+<!-- Certifications Section -->
+<section id="certifications">
+    <h2>Certifications</h2>
+    <ul>
+        <li><strong> Google Data Analytics</strong> – Coursera (2023)</li>
+        <li><strong>Deep Learning Specialization</strong> – Coursera (2023)</li>
+        <li><strong>AWS Cloud Technical Essentials</strong>– AWS</li>
+        <li><strong>Fundamentals of Deep Learning from NVIDIA</strong>– NVIDIA</li>
+
+    </ul>
+</section>
+
+    <footer>
+        <p>&copy; 2024 Dhiren Gangishetty | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
